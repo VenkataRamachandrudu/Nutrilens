@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NutriLens | Instant Food Nutrition Analysis</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./styles.css">
+</head>
+<body class="font-sans antialiased text-gray-800">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 flex items-center">
+                        <div class="w-8 h-8 rounded-full bg-[#3B82F6] flex items-center justify-center mr-2">
+                            <img src="logo_nutri.webp" alt="NutriSnap Logo" class="w-full h-full object-cover">
+                        </div>
+                        <span class="text-xl font-bold text-gray-800">NutriLens</span>
+                    </div>
+                </div>
+                <div class="hidden sm:ml-6 sm:flex sm:items-center space-x-8">
+                    <a href="#features" class="text-gray-500 hover:text-gray-700 px-3 py-2 text-sm font-medium">Features</a>
+                    <a href="#how-it-works" class="text-gray-500 hover:text-gray-700 px-3 py-2 text-sm font-medium">How It Works</a>
+                    <a href="./upload.html" class="bg-indigo-500 text-white px-4 py-2 rounded-full text-sm font-medium hover:bg-indigo-600 transition">Try Now</a>
+                </div>
+                <div class="-mr-2 flex items-center sm:hidden">
+                    <button type="button" id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="hidden sm:hidden" id="mobile-menu">
+            <div class="pt-2 pb-3 space-y-1">
+                <a href="#features" class="block px-3 py-2 text-base font-medium text-gray-500 hover:text-gray-700 hover:bg-gray-50">Features</a>
+                <a href="#how-it-works" class="block px-3 py-2 text-base font-medium text-gray-500 hover:text-gray-700 hover:bg-gray-50">How It Works</a>
+                <a href="./upload.html" class="block px-3 py-2 text-base font-medium text-indigo-600 hover:text-indigo-800 hover:bg-indigo-50">Try Now</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="gradient-bg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-32">
+            <div class="md:flex md:items-center md:justify-between">
+                <div class="md:w-1/2 mb-10 md:mb-0">
+                    <h1 class="text-4xl md:text-5xl font-bold leading-tight mb-6 text-gray-800">Know What You Eat With Just a Snap</h1>
+                    <p class="text-xl mb-8 text-gray-600">Upload a photo of your meal and get instant nutrition facts - protein, carbs, and fat breakdown.</p>
+                    <a href="./upload.html" class="bg-[#3B82F6] text-white px-8 py-3 rounded-full font-semibold hover:bg-[#2563EB] transition inline-block shadow-lg">Analyze Your Meal</a>
+                </div>
+                <div class="md:w-1/2 flex justify-center">
+                    <div class="relative w-full max-w-md">
+                        <div class="absolute -top-6 -left-6 w-64 h-64 bg-indigo-200 rounded-full opacity-30 blur-2xl"></div>
+                        <div class="absolute -bottom-6 -right-6 w-48 h-48 bg-purple-200 rounded-full opacity-30 blur-2xl"></div>
+                        <div class="relative bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100">
+                            <div class="p-6">
+                                <div class="flex justify-between items-center mb-4">
+                                    <span class="font-medium text-gray-700">Nutrition Analysis</span>
+                                    <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded-full">AI-Powered</span>
+                                </div>
+                                <div class="chart-container mb-6">
+                                    <svg viewBox="0 0 100 100" class="w-full h-full">
+                                        <circle class="chart-ring ring-bg" cx="50" cy="50" r="40"></circle>
+                                        <circle class="chart-ring ring-protein" cx="50" cy="50" r="40" 
+                                            stroke-dasharray="25 100" transform="rotate(-90 50 50)"></circle>
+                                        <circle class="chart-ring ring-carbs" cx="50" cy="50" r="40" 
+                                            stroke-dasharray="40 100" transform="rotate(-90 50 50)"></circle>
+                                        <circle class="chart-ring ring-fat" cx="50" cy="50" r="40" 
+                                            stroke-dasharray="35 100" transform="rotate(-90 50 50)"></circle>
+                                    </svg>
+                                    <div class="chart-center">
+                                        <div class="text-2xl font-bold text-gray-800">1200</div>
+                                        <div class="text-xs text-gray-500">Calories</div>
+                                    </div>
+                                </div>
+                                <div class="grid grid-cols-3 gap-3 text-center">
+                                    <div class="bg-blue-50 p-3 rounded-xl">
+                                        <div class="text-[#3B82F6] font-bold">24g</div>
+                                        <div class="text-xs text-gray-500 mt-1">Protein</div>
+                                    </div>
+                                    <div class="bg-[#10B981]/10 p-3 rounded-xl">
+                                        <div class="text-[#10B981] font-bold">42g</div>
+                                        <div class="text-xs text-gray-500 mt-1">Carbs</div>
+                                    </div>
+                                    <div class="bg-[#F59E0B]/10 p-3 rounded-xl">
+                                        <div class="text-[#F59E0B] font-bold">18g</div>
+                                        <div class="text-xs text-gray-500 mt-1">Fat</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Smart Nutrition Tracking</h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">NutriSnap makes nutrition tracking effortless with advanced AI technology.</p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-gray-50 rounded-2xl p-6 card-gradient shadow-sm border border-gray-100 fade-in">
+                    <div class="bg-indigo-100 w-14 h-14 rounded-xl flex items-center justify-center mb-4">
+                        <i class="fas fa-camera text-indigo-600 text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Snap & Analyze</h3>
+                    <p class="text-gray-600">Simply take a photo of your meal and let our AI analyze the nutritional content instantly.</p>
+                </div>
+                <div class="bg-gray-50 rounded-2xl p-6 card-gradient shadow-sm border border-gray-100 fade-in">
+                    <div class="bg-green-100 w-14 h-14 rounded-xl flex items-center justify-center mb-4">
+                        <i class="fas fa-chart-pie text-green-600 text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Macro Breakdown</h3>
+                    <p class="text-gray-600">Get detailed macronutrient information including protein, carbohydrates, and fats.</p>
+                </div>
+                <div class="bg-gray-50 rounded-2xl p-6 card-gradient shadow-sm border border-gray-100 fade-in">
+                    <div class="bg-purple-100 w-14 h-14 rounded-xl flex items-center justify-center mb-4">
+                        <i class="fas fa-history text-purple-600 text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Meal History</h3>
+                    <p class="text-gray-600">Track your nutrition over time with our simple meal logging system (coming soon).</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">How NutriLens Works</h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">Get nutrition facts in just three simple steps.</p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 fade-in">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-indigo-100 text-indigo-800 w-10 h-10 rounded-full flex items-center justify-center font-bold mr-3">1</div>
+                        <h3 class="text-lg font-semibold">Capture Your Meal</h3>
+                    </div>
+                    <p class="text-gray-600">Take a clear photo of your food using your smartphone camera or upload an existing image from your gallery.</p>
+                </div>
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 fade-in">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-indigo-100 text-indigo-800 w-10 h-10 rounded-full flex items-center justify-center font-bold mr-3">2</div>
+                        <h3 class="text-lg font-semibold">AI Analysis</h3>
+                    </div>
+                    <p class="text-gray-600">Our advanced computer vision technology identifies food items and estimates portion sizes automatically.</p>
+                </div>
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 fade-in">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-indigo-100 text-indigo-800 w-10 h-10 rounded-full flex items-center justify-center font-bold mr-3">3</div>
+                        <h3 class="text-lg font-semibold">Get Nutrition Facts</h3>
+                    </div>
+                    <p class="text-gray-600">Receive instant macronutrient breakdown and calorie estimation for your meal.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+
+
+    <script src="./app.js"></script>
+</body>
+</html>

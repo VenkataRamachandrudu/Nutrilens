@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Analysis | NutriLens</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body class="font-sans antialiased text-gray-800 bg-gray-50">
+  <nav class="bg-white shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between h-16">
+        <div class="flex items-center">
+          <a href="./index.html" class="flex items-center">
+            <div class="w-8 h-8 rounded-full bg-[#3B82F6] flex items-center justify-center mr-2">
+               <img src="logo_nutri.webp" alt="NutriSnap Logo" class="w-full h-full object-cover">
+            </div>
+            <span class="text-xl font-bold text-gray-800">NutriLens</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main class="py-12">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="bg-white rounded-2xl p-6 mb-6 shadow-sm border border-gray-100">
+        <div class="flex items-center justify-between mb-2">
+          <h1 class="text-2xl font-semibold">Nutrition Summary</h1>
+          <a href="./upload.html" class="text-sm text-indigo-600 hover:underline">Analyze another</a>
+        </div>
+        <div id="summary-item-name" class="text-gray-600 mb-4"></div>
+        <div class="grid sm:grid-cols-2 gap-6 items-start">
+          <div>
+            <img id="summary-image" alt="Analyzed meal" class="summary-image w-full rounded-xl border border-gray-100 mb-4" />
+            <div class="space-y-2 text-gray-700">
+              <div>Protein: <span id="protein-value" class="font-semibold">--</span> g</div>
+              <div>Carbs: <span id="carbs-value" class="font-semibold">--</span> g</div>
+              <div>Fat: <span id="fat-value" class="font-semibold">--</span> g</div>
+              <div>Calories: <span id="calories-value" class="font-semibold">--</span> kcal</div>
+            </div>
+          </div>
+          <div>
+            <div class="grid grid-cols-3 gap-4">
+              <div class="text-center">
+                <div class="relative w-24 h-24 mx-auto">
+                  <svg viewBox="0 0 100 100" class="w-full h-full">
+                    <circle cx="50" cy="50" r="40" class="chart-ring ring-bg" />
+                    <circle cx="50" cy="50" r="40" class="chart-ring ring-protein" stroke-linecap="round" transform="rotate(-90 50 50)" />
+                  </svg>
+                  <div class="absolute inset-0 flex items-center justify-center text-sm font-semibold text-indigo-600"><span id="protein-pct">--%</span></div>
+                </div>
+                <div class="mt-2 text-sm text-gray-600">Protein</div>
+              </div>
+              <div class="text-center">
+                <div class="relative w-24 h-24 mx-auto">
+                  <svg viewBox="0 0 100 100" class="w-full h-full">
+                    <circle cx="50" cy="50" r="40" class="chart-ring ring-bg" />
+                    <circle cx="50" cy="50" r="40" class="chart-ring ring-carbs" stroke-linecap="round" transform="rotate(-90 50 50)" />
+                  </svg>
+                  <div class="absolute inset-0 flex items-center justify-center text-sm font-semibold text-green-600"><span id="carbs-pct">--%</span></div>
+                </div>
+                <div class="mt-2 text-sm text-gray-600">Carbs</div>
+              </div>
+              <div class="text-center">
+                <div class="relative w-24 h-24 mx-auto">
+                  <svg viewBox="0 0 100 100" class="w-full h-full">
+                    <circle cx="50" cy="50" r="40" class="chart-ring ring-bg" />
+                    <circle cx="50" cy="50" r="40" class="chart-ring ring-fat" stroke-linecap="round" transform="rotate(-90 50 50)" />
+                  </svg>
+                  <div class="absolute inset-0 flex items-center justify-center text-sm font-semibold text-yellow-600"><span id="fat-pct">--%</span></div>
+                </div>
+                <div class="mt-2 text-sm text-gray-600">Fat</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white border border-gray-200 rounded-2xl p-6 shadow-sm">
+        <h3 class="text-lg font-semibold mb-4">Items detected</h3>
+        <div id="ingredients-list" class="space-y-3"></div>
+      </div>
+    </div>
+  </main>
+
+  <script src="./app.js"></script>
+</body>
+</html>

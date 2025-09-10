@@ -1,0 +1,124 @@
+:root {
+    --primary-bg: #121217;
+    --secondary-bg: #1E1E2F;
+    --primary-accent: #3B82F6;
+    --secondary-accent: #8B5CF6;
+    --text-primary: #E4E4F1;
+    --text-secondary: #A0A0B0;
+    --success: #10B981;
+    --warning: #10B981; /* Changed to same as success or any neutral color */
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--primary-bg);
+    color: var(--text-primary);
+    margin: 0;
+    padding: 0;
+}
+
+.gradient-bg {
+    background: linear-gradient(135deg, var(--secondary-bg) 0%, var(--primary-bg) 100%);
+}
+
+.card-gradient {
+    background: linear-gradient(135deg, var(--primary-bg) 0%, var(--secondary-bg) 100%);
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.5);
+    padding: 20px;
+}
+
+/* File input */
+.file-input {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+
+.file-input-label {
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: var(--text-primary);
+}
+
+.file-input-label:hover {
+    transform: translateY(-2px);
+    color: var(--primary-accent);
+}
+
+/* Preview image */
+.preview-image {
+    max-height: 300px;
+    object-fit: contain;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+}
+
+/* Result card */
+.result-card {
+    transition: all 0.5s ease;
+    opacity: 0;
+    height: 0;
+    overflow: hidden;
+}
+
+.result-card.show {
+    opacity: 1;
+    height: auto;
+}
+
+/* Chart container */
+.chart-container {
+    position: relative;
+    width: 250px;
+    height: 250px;
+    margin: 0 auto;
+}
+
+.chart-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.chart-ring {
+    fill: none;
+    stroke-width: 12;
+    stroke-linecap: butt; /* changed from round to remove end balls */
+}
+
+.ring-bg {
+    stroke: #2A2A3A;
+}
+
+.ring-protein {
+    stroke: var(--secondary-accent);
+    stroke-dasharray: 0 100;
+    transition: stroke-dasharray 1s ease;
+}
+
+.ring-carbs {
+    stroke: var(--success);
+    stroke-dasharray: 0 100;
+    transition: stroke-dasharray 1s ease;
+}
+
+/* Remove fat ring by hiding it */
+.ring-fat {
+    display: none; /* hides the orange balls */
+}
+
+/* Fade-in animation */
+.fade-in {
+    animation: fadeIn 0.8s ease forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
