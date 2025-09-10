@@ -97,7 +97,7 @@ if (analyzeButton) {
 
       // Send to webhook
       const response = await fetch(
-        'https://ajaychanumolu05.app.n8n.cloud/webhook/meal_ai',
+        'https://venkataramachandruduch.app.n8n.cloud/webhook-test/meal_ai',
         {
           method: 'POST',
           body: formData,
