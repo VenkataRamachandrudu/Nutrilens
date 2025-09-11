@@ -1,4 +1,263 @@
-# NutriSnap — AI Meal Nutrition Analyzer
+Here’s a clean **GitHub README section** you can use for your **Nutrilens** project. I formatted your n8n workflow JSON so it looks professional in your repo 👇
 
-A lightweight static web app that analyzes meal images and shows nutrition summaries using an n8n workflow with Google Gemini AI.
+---
 
+# Nutrilens — AI Meal Nutrition Analyzer 🍽️🤖
+
+Nutrilens is an AI-powered nutrition analysis tool that allows users to upload meal images and get a structured nutritional breakdown including calories, macronutrients, and key health insights.
+It uses **n8n**, **Google Gemini AI**, and a structured output parser to return clean, JSON-formatted nutrition data.
+
+---
+
+## 🚀 Workflow Setup (n8n)
+
+Below is the n8n workflow JSON used in this project:
+
+<details>
+<summary>📜 Click to view workflow JSON</summary>
+
+{
+  "name": "Nutrilens",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "meal_ai",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "6b65a571-da0d-44ad-938d-10997652bde6",
+      "name": "Webhook",
+      "webhookId": "dfa243d6-1581-406b-9a24-b670eac8a4e5"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Analyze the dish in this image and provide a detailed nutritional breakdown, including estimated calories, macronutrients (protein, carbs, fats), and any notable micronutrients or health considerations.",
+        "hasOutputParser": true,
+        "options": {
+          "passthroughBinaryImages": true
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2.2,
+      "position": [
+        208,
+        0
+      ],
+      "id": "55eaabc7-2489-45d5-ba6a-e88724ca549e",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "modelName": "models/gemini-2.5-pro",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        80,
+        208
+      ],
+      "id": "65d2ad4a-79ce-4ba6-a05a-9be8bac79c66",
+      "name": "Google Gemini Chat Model",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "CyxBIMb0T3c0Pz2B",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsonSchemaExample": "{\n  \"status\": \"success\",\n  \"food\": [\n    {\n      \"name\": \"Grilled Chicken Breast\",\n      \"quantity\": \"150g\",\n      \"calories\": 240,\n      \"protein\": 45,\n      \"carbs\": 0,\n      \"fat\": 5\n    },\n    {\n      \"name\": \"Steamed Broccoli\",\n      \"quantity\": \"100g\",\n      \"calories\": 35,\n      \"protein\": 3,\n      \"carbs\": 7,\n      \"fat\": 0\n    }\n  ],\n  \"total\": {\n    \"calories\": 275,\n    \"protein\": 48,\n    \"carbs\": 7,\n    \"fat\": 5\n  }\n}\n"
+      },
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1.3,
+      "position": [
+        496,
+        224
+      ],
+      "id": "5f16784c-77bb-42c2-b1ff-17c375229227",
+      "name": "Structured Output Parser"
+    },
+    {
+      "parameters": {
+        "respondWith": "allIncomingItems",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.4,
+      "position": [
+        544,
+        0
+      ],
+      "id": "c79fabcc-96ee-41aa-aa79-7876fda7969a",
+      "name": "Respond to Webhook"
+    }
+  ],
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "venkataramachandruduch.app.n8n.cloud",
+            "user-agent": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Mobile Safari/537.36",
+            "content-length": "162871",
+            "accept": "*/*",
+            "accept-encoding": "gzip, br",
+            "accept-language": "en-US,en;q=0.9,te;q=0.8",
+            "cdn-loop": "cloudflare; loops=1; subreqs=1",
+            "cf-connecting-ip": "2409:40f0:3023:e128:2054:87ff:fec1:606d",
+            "cf-ew-via": "15",
+            "cf-ipcountry": "IN",
+            "cf-ray": "97d6c36af00f3f4e-SIN",
+            "cf-visitor": "{\"scheme\":\"https\"}",
+            "cf-worker": "n8n.cloud",
+            "content-type": "multipart/form-data; boundary=----WebKitFormBoundarynONhcfe3UAdROXwN",
+            "origin": "https://nutrilensbychandu.netlify.app",
+            "priority": "u=1, i",
+            "referer": "https://nutrilensbychandu.netlify.app/",
+            "sec-ch-ua": "\"Not;A=Brand\";v=\"99\", \"Google Chrome\";v=\"139\", \"Chromium\";v=\"139\"",
+            "sec-ch-ua-mobile": "?1",
+            "sec-ch-ua-platform": "\"Android\"",
+            "sec-fetch-dest": "empty",
+            "sec-fetch-mode": "cors",
+            "sec-fetch-site": "cross-site",
+            "x-forwarded-for": "2409:40f0:3023:e128:2054:87ff:fec1:606d, 162.158.189.243",
+            "x-forwarded-host": "venkataramachandruduch.app.n8n.cloud",
+            "x-forwarded-port": "443",
+            "x-forwarded-proto": "https",
+            "x-forwarded-server": "traefik-prod-users-gwc-59-5786bcf55-mxnbg",
+            "x-is-trusted": "yes",
+            "x-real-ip": "2409:40f0:3023:e128:2054:87ff:fec1:606d"
+          },
+          "params": {},
+          "query": {},
+          "body": {},
+          "webhookUrl": "https://venkataramachandruduch.app.n8n.cloud/webhook/meal_ai",
+          "executionMode": "test"
+        },
+        "binary": {
+          "image": {
+            "mimeType": "image/jpeg",
+            "fileType": "image",
+            "fileExtension": "jpeg",
+            "data": "filesystem-v2",
+            "fileName": "1000277871.jpg",
+            "id": "filesystem-v2:workflows/l4eDHU2CGvf0yRi6/executions/temp/binary_data/4d8657e7-fcab-4834-87ca-7e666176d9b8",
+            "fileSize": "163 kB"
+          }
+        }
+      }
+    ]
+  },
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Structured Output Parser": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "5bd44796-866f-41aa-89db-c795b0faec9a",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "10f79bd28ca852f634929a981b28c526a746fcbfd1a93be64ce1877ecd5f0b10"
+  },
+  "id": "l4eDHU2CGvf0yRi6",
+  "tags": []
+}
+
+</details>
+
+---
+
+## 🔧 How It Works
+
+1. **Frontend (Netlify)** → Users upload meal images.
+2. **Webhook (n8n Cloud)** → Receives the uploaded image.
+3. **AI Agent (LangChain + Gemini)** → Analyzes meal & estimates nutrition.
+4. **Structured Output Parser** → Converts raw AI response into JSON.
+5. **Response** → Returns structured nutrition data to frontend.
+
+---
+
+✅ Example output:
+
+```json
+{
+  "status": "success",
+  "food": [
+    {
+      "name": "Grilled Chicken Breast",
+      "quantity": "150g",
+      "calories": 240,
+      "protein": 45,
+      "carbs": 0,
+      "fat": 5
+    },
+    {
+      "name": "Steamed Broccoli",
+      "quantity": "100g",
+      "calories": 35,
+      "protein": 3,
+      "carbs": 7,
+      "fat": 0
+    }
+  ],
+  "total": {
+    "calories": 275,
+    "protein": 48,
+    "carbs": 7,
+    "fat": 5
+  }
+}
