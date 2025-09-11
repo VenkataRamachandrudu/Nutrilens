@@ -13,9 +13,8 @@ It uses **n8n**, **Google Gemini AI**, and a structured output parser to return 
 
 Below is the n8n workflow JSON used in this project:
 
-<details>
-<summary>📜 Click to view workflow JSON</summary>
 
+```json
 {
   "name": "Nutrilens",
   "nodes": [
@@ -216,10 +215,6 @@ Below is the n8n workflow JSON used in this project:
   "id": "l4eDHU2CGvf0yRi6",
   "tags": []
 }
-
-</details>
-
----
 
 ## 🔧 How It Works
 
