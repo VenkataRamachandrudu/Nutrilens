@@ -220,11 +220,10 @@ Below is the n8n workflow JSON used in this project:
 
 1. **Frontend (Netlify)** → Users upload meal images.
 2. **Webhook (n8n Cloud)** → Receives the uploaded image.
-3. **AI Agent (LangChain + Gemini)** → Analyzes meal & estimates nutrition.
+3. **AI Agent (Gemini)** → Analyzes meal & estimates nutrition.
 4. **Structured Output Parser** → Converts raw AI response into JSON.
 5. **Response** → Returns structured nutrition data to frontend.
 
----
 
 ✅ Example output:
 
