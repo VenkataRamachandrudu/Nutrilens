@@ -4,76 +4,67 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Upload | NutriLens</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./styles.css">
 </head>
-<body class="font-sans antialiased text-gray-800 bg-gray-50">
-  <nav class="bg-white shadow-sm">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex justify-between h-16">
-        <div class="flex items-center">
-          <a href="./index.html" class="flex items-center">
-            <div class="w-8 h-8 rounded-full bg-[#3B82F6] flex items-center justify-center mr-2">
-               <img src="logo_nutri.webp" alt="NutriSnap Logo" class="w-full h-full object-cover">
-            </div>
-            <span class="text-xl font-bold text-gray-800">NutriLens</span>
-          </a>
+<body>
+  <nav class="navbar">
+    <div class="container nav-container">
+      <a href="./index.html" class="nav-brand">
+        <div class="logo-icon-wrapper">
+           <img src="logo_nutri.webp" alt="NutriLens Logo" class="logo-image">
         </div>
-      </div>
+        <span class="brand-name">NutriLens</span>
+      </a>
     </div>
   </nav>
 
-  <main class="py-12">
-    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="bg-white rounded-2xl shadow-md overflow-hidden border border-gray-200">
-        <div class="p-6">
-          <h1 class="text-2xl font-semibold mb-6">Upload your meal</h1>
+  <main class="main-content">
+    <div class="upload-container">
+      <div class="upload-card">
+        <div class="upload-card-content">
+          <h1 class="upload-title">Upload your meal</h1>
 
-          <div id="upload-section" class="text-center">
+          <div id="upload-section" class="upload-area">
             <input type="file" id="food-image" accept="image/jpeg, image/png" class="file-input">
             <label for="food-image" class="file-input-label">
-              <div class="border-2 border-dashed border-gray-300 rounded-2xl p-10 hover:border-indigo-400 transition">
-                <div class="flex flex-col items-center justify-center">
-                  <div class="w-16 h-16 bg-indigo-100 rounded-full flex items-center justify-center mb-4">
-                    <i class="fas fa-cloud-upload-alt text-indigo-500 text-2xl"></i>
-                  </div>
-                  <h3 class="text-lg font-medium text-gray-700 mb-2">Upload Food Photo</h3>
-                  <p class="text-gray-500 mb-4">Click to browse your files (JPG, PNG)</p>
-                  <div class="bg-indigo-500 text-white px-6 py-2 rounded-full font-medium hover:bg-indigo-600 transition cursor-pointer">Choose File</div>
+              <div class="upload-box">
+                <div class="upload-box-content">
+                  <div class="upload-icon-wrapper">
+                    <span>&#128229;</span> </div>
+                  <h3 class="upload-box-title">Upload Food Photo</h3>
+                  <p class="upload-box-subtitle">Click to browse your files (JPG, PNG)</p>
+                  <div class="btn btn-upload">Choose File</div>
                 </div>
               </div>
             </label>
           </div>
 
-          <div id="preview-section" class="mt-6 hidden">
-            <div class="flex justify-between items-center mb-4">
-              <h3 class="text-lg font-medium">Your Meal</h3>
-              <button id="change-image" class="text-indigo-500 hover:text-indigo-700 text-sm font-medium">Change Image</button>
+          <div id="preview-section" class="hidden">
+            <div class="preview-header">
+              <h3 class="preview-title">Your Meal</h3>
+              <button id="change-image" class="change-image-btn">Change Image</button>
             </div>
-            <div class="bg-gray-100 rounded-xl overflow-hidden">
-              <img id="image-preview" class="preview-image w-full" src="" alt="Food preview">
+            <div class="preview-image-container">
+              <img id="image-preview" class="preview-image" src="" alt="Food preview">
             </div>
-            <div class="mt-4">
-              <button id="analyze-button" class="w-full bg-[#3B82F6] text-white py-3 rounded-full font-medium hover:bg-[#2563EB] transition flex items-center justify-center">
+            <div class="analyze-btn-container">
+              <button id="analyze-button" class="btn btn-analyze">
                 <span>Analyze Nutrition</span>
-                <i class="fas fa-spinner fa-spin ml-2 hidden" id="analyze-spinner"></i>
+                <span class="spinner hidden" id="analyze-spinner"></span>
               </button>
             </div>
           </div>
 
-          <div id="progress-section" class="mt-6 hidden">
-            <div class="flex flex-col items-center justify-center py-10">
-              <div class="relative w-24 h-24 mb-6">
-                <div class="absolute inset-0 border-4 border-indigo-100 rounded-full"></div>
-                <div class="absolute inset-0 border-4 border-indigo-500 border-t-transparent rounded-full animate-spin"></div>
-                <div class="absolute inset-0 flex items-center justify-center text-indigo-500">
-                  <i class="fas fa-camera text-2xl"></i>
-                </div>
+          <div id="progress-section" class="hidden">
+            <div class="progress-content">
+              <div class="progress-spinner-wrapper">
+                <div class="progress-spinner-bg"></div>
+                <div class="progress-spinner"></div>
+                <div class="progress-icon">
+                  <span>&#128247;</span> </div>
               </div>
-              <p class="text-lg font-medium text-gray-700">Analyzing your meal...</p>
-              <p class="text-gray-500 mt-2">This may take a few seconds</p>
+              <p class="progress-text">Analyzing your meal...</p>
+              <p class="progress-subtext">This may take a few seconds</p>
             </div>
           </div>
 

@@ -4,85 +4,78 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Analysis | NutriLens</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./styles.css">
 </head>
-<body class="font-sans antialiased text-gray-800 bg-gray-50">
-  <nav class="bg-white shadow-sm">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex justify-between h-16">
-        <div class="flex items-center">
-          <a href="./index.html" class="flex items-center">
-            <div class="w-8 h-8 rounded-full bg-[#3B82F6] flex items-center justify-center mr-2">
-               <img src="logo_nutri.webp" alt="NutriSnap Logo" class="w-full h-full object-cover">
-            </div>
-            <span class="text-xl font-bold text-gray-800">NutriLens</span>
-          </a>
+<body>
+  <nav class="navbar">
+    <div class="container nav-container">
+      <a href="./index.html" class="nav-brand">
+        <div class="logo-icon-wrapper">
+           <img src="logo_nutri.webp" alt="NutriLens Logo" class="logo-image">
         </div>
-      </div>
+        <span class="brand-name">NutriLens</span>
+      </a>
     </div>
   </nav>
 
-  <main class="py-12">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="bg-white rounded-2xl p-6 mb-6 shadow-sm border border-gray-100">
-        <div class="flex items-center justify-between mb-2">
-          <h1 class="text-2xl font-semibold">Nutrition Summary</h1>
-          <a href="./upload.html" class="text-sm text-indigo-600 hover:underline">Analyze another</a>
+  <main class="main-content">
+    <div class="analysis-container">
+      <div class="summary-card">
+        <div class="summary-header">
+          <h1 class="summary-title">Nutrition Summary</h1>
+          <a href="./upload.html" class="analyze-another-link">Analyze another</a>
         </div>
-        <div id="summary-item-name" class="text-gray-600 mb-4"></div>
-        <div class="grid sm:grid-cols-2 gap-6 items-start">
-          <div>
-            <img id="summary-image" alt="Analyzed meal" class="summary-image w-full rounded-xl border border-gray-100 mb-4" />
-            <div class="space-y-2 text-gray-700">
+        <div id="summary-item-name" class="summary-item-name"></div>
+        <div class="summary-grid">
+          <div class="summary-image-and-details">
+            <img id="summary-image" alt="Analyzed meal" class="summary-image" />
+            <div class="summary-details">
               <div>Protein: <span id="protein-value" class="font-semibold">--</span> g</div>
               <div>Carbs: <span id="carbs-value" class="font-semibold">--</span> g</div>
               <div>Fat: <span id="fat-value" class="font-semibold">--</span> g</div>
               <div>Calories: <span id="calories-value" class="font-semibold">--</span> kcal</div>
             </div>
           </div>
-          <div>
-            <div class="grid grid-cols-3 gap-4">
-              <div class="text-center">
-                <div class="relative w-24 h-24 mx-auto">
-                  <svg viewBox="0 0 100 100" class="w-full h-full">
+          <div class="summary-charts">
+            <div class="chart-grid">
+              <div class="chart-item">
+                <div class="chart-wrapper">
+                  <svg viewBox="0 0 100 100" class="chart-svg">
                     <circle cx="50" cy="50" r="40" class="chart-ring ring-bg" />
-                    <circle cx="50" cy="50" r="40" class="chart-ring ring-protein" stroke-linecap="round" transform="rotate(-90 50 50)" />
+                    <circle cx="50" cy="50" r="40" class="chart-ring ring-protein" transform="rotate(-90 50 50)" />
                   </svg>
-                  <div class="absolute inset-0 flex items-center justify-center text-sm font-semibold text-indigo-600"><span id="protein-pct">--%</span></div>
+                  <div class="chart-percentage text-indigo"><span id="protein-pct">--%</span></div>
                 </div>
-                <div class="mt-2 text-sm text-gray-600">Protein</div>
+                <div class="chart-label">Protein</div>
               </div>
-              <div class="text-center">
-                <div class="relative w-24 h-24 mx-auto">
-                  <svg viewBox="0 0 100 100" class="w-full h-full">
+              <div class="chart-item">
+                <div class="chart-wrapper">
+                  <svg viewBox="0 0 100 100" class="chart-svg">
                     <circle cx="50" cy="50" r="40" class="chart-ring ring-bg" />
-                    <circle cx="50" cy="50" r="40" class="chart-ring ring-carbs" stroke-linecap="round" transform="rotate(-90 50 50)" />
+                    <circle cx="50" cy="50" r="40" class="chart-ring ring-carbs" transform="rotate(-90 50 50)" />
                   </svg>
-                  <div class="absolute inset-0 flex items-center justify-center text-sm font-semibold text-green-600"><span id="carbs-pct">--%</span></div>
+                  <div class="chart-percentage text-green"><span id="carbs-pct">--%</span></div>
                 </div>
-                <div class="mt-2 text-sm text-gray-600">Carbs</div>
+                <div class="chart-label">Carbs</div>
               </div>
-              <div class="text-center">
-                <div class="relative w-24 h-24 mx-auto">
-                  <svg viewBox="0 0 100 100" class="w-full h-full">
+              <div class="chart-item">
+                <div class="chart-wrapper">
+                  <svg viewBox="0 0 100 100" class="chart-svg">
                     <circle cx="50" cy="50" r="40" class="chart-ring ring-bg" />
-                    <circle cx="50" cy="50" r="40" class="chart-ring ring-fat" stroke-linecap="round" transform="rotate(-90 50 50)" />
+                    <circle cx="50" cy="50" r="40" class="chart-ring ring-fat" transform="rotate(-90 50 50)" />
                   </svg>
-                  <div class="absolute inset-0 flex items-center justify-center text-sm font-semibold text-yellow-600"><span id="fat-pct">--%</span></div>
+                  <div class="chart-percentage text-yellow"><span id="fat-pct">--%</span></div>
                 </div>
-                <div class="mt-2 text-sm text-gray-600">Fat</div>
+                <div class="chart-label">Fat</div>
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      <div class="bg-white border border-gray-200 rounded-2xl p-6 shadow-sm">
-        <h3 class="text-lg font-semibold mb-4">Items detected</h3>
-        <div id="ingredients-list" class="space-y-3"></div>
+      <div class="items-detected-card">
+        <h3 class="items-detected-title">Items detected</h3>
+        <div id="ingredients-list" class="ingredients-list-container"></div>
       </div>
     </div>
   </main>
